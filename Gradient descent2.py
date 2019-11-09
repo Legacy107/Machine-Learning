@@ -25,9 +25,8 @@ def Gradient():
     W = np.array([[float(tmp[0])],[float(tmp[1])],[float(tmp[2])]], dtype = np.float64)
     file.close()
     #W = np.zeros((3,1),dtype = np.float64)
-    #W = np.array([[0.11035629],[-35.50975537],[0.52569422]],dtype = np.float64)
     numiter = 100000
-    learnrate = 0.0000000022
+    learnrate = 0.00000000227
     loss = []
     for i in range(numiter):
         tmp = X.dot(W) - Y
@@ -35,10 +34,10 @@ def Gradient():
         W[1] -= learnrate*np.sum(X[:,1].reshape(-1,1)*(tmp))
         W[2] -= learnrate*np.sum(X[:,2].reshape(-1,1)*(tmp))
         #loss.append(0.5*np.sum(tmp*tmp))
-        #if len(loss)>1: print(loss[len(loss)-2]-loss[len(loss)-1],loss[len(loss)-1])
         #if i%1000==0: Plot(i)
     Plotres()
     print(0.5*np.sum(tmp*tmp))
+    #plt.plot(np.arange(len(loss)),loss,'r')
     file = open('gradientdata.out','w')
     file.write('%.16f %.16f %.16f'%(W[0],W[1],W[2]))
 
